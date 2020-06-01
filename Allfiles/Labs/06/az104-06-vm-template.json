@@ -42,8 +42,10 @@
     "subnetIpPrefix": "[concat('10.6',parameters('nameSuffix'),'.0.0/24')]", 
     "subnetName": "subnet0",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "computeApiVersion": "2018-10-01",
-    "networkApiVersion": "2018-12-01"
+    "computeApiVersion": "latest2020",
+    "networkApiVersion": "latest2020",
+    "username" : "student",
+    "password" : "Pa55w.rd1234"
   },
     "resources": [
         {
@@ -57,8 +59,8 @@
             "properties": {
                 "osProfile": {
                     "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]",
+                    "adminUsername": "[variables('username')]",
+                    "adminPassword": "[variables('password')]",
                     "windowsConfiguration": {
                         "provisionVmAgent": "true"
                     }
@@ -68,9 +70,9 @@
                 },
                 "storageProfile": {
                     "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "2019-Datacenter",
+                        "publisher": "RedHat",
+                        "offer": "RHEL",
+                        "sku": "7-LVM",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -179,12 +181,12 @@
                         }
                     },
                     {
-                        "name": "default-allow-http",
+                        "name": "default-allow-SSH",
                         "properties": {
                             "priority": 1100,
                             "sourceAddressPrefix": "*",
-                            "protocol": "Tcp",
-                            "destinationPortRange": "80",
+                            "protocol": "Udp",
+                            "destinationPortRange": "22",
                             "access": "Allow",
                             "direction": "Inbound",
                             "sourcePortRange": "*",
