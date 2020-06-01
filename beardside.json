@@ -129,16 +129,16 @@
         "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet0Name'))]",
         "vmExtensionName": "dscExtension",
-        "numberOfInstances": 2,
+        "numberOfInstances": 2 ,
         "backendserver": "backend2",
-        "nicname" : "backend2nic",
-        "pupip" : "backendpupip"
+        "nicname" : "backend2nic"
+        
     },
     "resources": [
         {
             "type": "Microsoft.Compute/availabilitySets",
             "apiVersion": "2018-06-01",
-            "name": "[variable('backendserve')]",
+            "name": "[parameters('availabilitysetname')]",
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Aligned"
