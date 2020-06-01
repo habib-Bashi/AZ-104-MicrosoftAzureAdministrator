@@ -131,7 +131,9 @@
         "vmExtensionName": "dscExtension",
         "numberOfInstances": 2 ,
         "backendserver": "backend2",
-        "nicname" : "backend2nic"
+        "nicname" : "backend2nic",
+        "username":"student",
+        "password":"Pa55w.rd1234"
         
     },
     "resources": [
@@ -170,7 +172,7 @@
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nicname'))]"
                 }
             },
             "copy": {
@@ -267,8 +269,8 @@
                 },
                 "osProfile": {
                     "computerName": "[concat(variables('backendserve'), copyIndex())]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
+                    "adminUsername": "[variables('username')]",
+                    "adminPassword": "[variables('password')]"
                 },
                 "storageProfile": {
                     "imageReference": {
