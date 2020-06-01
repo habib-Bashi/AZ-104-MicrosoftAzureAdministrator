@@ -181,7 +181,7 @@
         {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2018-08-01",
-            "name": "[parameters('virtualNetworkName')]",
+            "name": "[variables('nicname')]",
             "location": "[resourceGroup().location]",
             "properties": {
                 "addressSpace": {
