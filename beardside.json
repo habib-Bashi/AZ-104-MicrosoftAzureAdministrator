@@ -156,8 +156,8 @@
             "name": "[concat(variables('nicname'), copyindex())]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+                "[concat('Microsoft.Network/networkSecurityGroups/', variables('nicname'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/', variables('nicname'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -269,8 +269,8 @@
                 },
                 "osProfile": {
                     "computerName": "[concat(variables('backendserve'), copyIndex())]",
-                    "adminUsername": "[variables('username')]",
-                    "adminPassword": "[variables('password')]"
+                    "adminUsername": "[concat(variables('username'))]",
+                    "adminPassword": "[concat(variables('password'))]"
                 },
                 "storageProfile": {
                     "imageReference": {
