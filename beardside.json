@@ -156,7 +156,7 @@
             "name": "[concat(variables('nicname'), copyindex())]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[concat('Microsoft.Network/networkSecurityGroups/', variables('nicname'))]",
+                "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks/', variables('nicname'))]"
             ],
             "properties": {
